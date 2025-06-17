@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Apoyo para Cuidadores - CESFAM Recreo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8fafc; /* gray-50 */
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+        }
+        .filter-btn {
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .filter-btn.active {
+            background-color: #0369a1; /* sky-700 */
+            color: white;
+            border-color: #0369a1; /* sky-700 */
+        }
+        .landing-enter-button {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .landing-enter-button:hover {
+            transform: translateY(-2px);
+        }
+        .content-card {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Landing Page Section -->
+    <div id="landing-page" class="min-h-screen flex flex-col justify-center items-center p-6 bg-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-bold text-sky-800 mb-4">Portal de Apoyo al Cuidador</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-600 mb-8">Una iniciativa del CESFAM Recreo, San Miguel</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <img src="https://placehold.co/600x400/a5b4fc/FFFFFF?text=Cuidado+y+Apoyo" alt="Imagen de cuidado y apoyo" class="rounded-lg shadow-md w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/7dd3fc/FFFFFF?text=Bienestar+en+Casa" alt="Imagen de bienestar en el hogar" class="rounded-lg shadow-md w-full h-full object-cover">
+                <img src="https://placehold.co/600x400/67e8f9/FFFFFF?text=Salud+Comunitaria" alt="Imagen de salud comunitaria" class="rounded-lg shadow-md w-full h-full object-cover">
+            </div>
+
+            <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
+                Este espacio ha sido creado para usted, cuidador o cuidadora de un familiar en situación de dependencia severa. Aquí encontrará guías prácticas, respuestas a preguntas frecuentes y recursos para apoyarle en la valiosa labor de cuidar.
+            </p>
+
+            <button id="enter-portal-btn" class="landing-enter-button bg-sky-600 text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-sky-700 shadow-lg">
+                Ingresar al Portal
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Portal (Initially Hidden) -->
+    <div id="main-portal" class="hidden">
+        <!-- Main Content Wrapper -->
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <!-- Categories Section -->
+            <section id="categories" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-sky-800 mb-4">Áreas de Cuidado Esencial</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">Seleccione una categoría para explorar.</p>
+                
+                <div id="faq-filters" class="flex flex-wrap gap-4 justify-center">
+                    <button class="filter-btn active py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="higiene">Higiene Personal</button>
+                    <button class="filter-btn py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="alimentacion">Alimentación</button>
+                    <button class="filter-btn py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="movilidad">Movilidad</button>
+                    <button class="filter-btn py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="sueno">Higiene del Sueño</button>
+                    <button class="filter-btn py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="rutinas">Rutinas</button>
+                    <button class="filter-btn py-4 px-6 border rounded-lg text-lg font-semibold shadow-sm w-full sm:w-auto" data-category="salud">Salud General</button>
+                </div>
+            </section>
+            
+            <!-- Content Display Area -->
+            <div id="content-display-area" class="mt-12">
+                <!-- Higiene Content -->
+                <div id="content-higiene" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-6">Higiene Personal</h3>
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-2/3 space-y-4 text-gray-700">
+                            <div>
+                                <h4 class="font-semibold text-lg">Aseo Corporal Diario: Un Acto de Cuidado Esencial</h4>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                    <li>Es necesario realizar un <strong>baño diario</strong>, ya sea en la ducha (si es posible) o un aseo completo en cama. Esto no solo limpia, sino que también estimula la circulación y proporciona confort.</li>
+                                    <li>El secado es tan importante como el lavado. <strong>Asegúrese de que el cuerpo quede completamente seco, secando con toques suaves y prestando especial atención a los pliegues</strong> (axilas, ingles, debajo de los senos, entre los dedos).</li>
+                                    <li>La humedad en los pliegues favorece la aparición de dermatitis (irritación) y micosis (hongos), por lo que un buen secado es la mejor prevención.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Inspección de la Piel y Prevención de Lesiones</h4>
+                                <p>El momento del baño es la mejor oportunidad para revisar el estado de la piel.</p>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                     <li><strong>Inspección activa:</strong> Aproveche el aseo para revisar la piel de todo el cuerpo. Busque enrojecimientos en zonas de presión (sacro, talones, codos) y revise los pliegues en busca de cualquier anomalía como irritación o puntos blancos.</li>
+                                    <li><strong>Hidratación:</strong> Después del secado, aplique cremas hidratantes para mantener la elasticidad de la piel y prevenir grietas, que son una puerta de entrada para infecciones.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Higiene Bucal</h4>
+                                <p>Una boca sana previene infecciones y complicaciones graves como la neumonía por aspiración. Realice el aseo al menos dos veces al día, usando un cepillo de cerdas suaves. Si hay prótesis, retírelas y límpielas por separado.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/3 mt-6 md:mt-0">
+                            <img src="Imagenes/Puntos de lesiones por presion.jpg" alt="Puntos de presión en el cuerpo para prevenir lesiones" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alimentación Content -->
+                <div id="content-alimentacion" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-6">Alimentación Segura</h3>
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="md:w-2/3 space-y-4 text-gray-700">
+                           <h4 class="font-semibold text-lg">Manejo de la Disfagia (dificultad para tragar)</h4>
+                            <p>La seguridad al comer es prioritaria para evitar que alimentos o líquidos pasen a la vía respiratoria.</p>
+                            <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                <li><strong>Postura correcta:</strong> La persona debe estar sentada lo más recta posible (idealmente 90°) durante la comida y hasta 30-60 minutos después. Si el equipo de salud le indicó realizar la maniobra de "llevar el mentón al pecho" al tragar, es fundamental recordarlo en cada bocado.</li>
+                                <li><strong>Consistencia y volúmenes:</strong> La consistencia de los alimentos será adaptada según indicación del equipo. Es fundamental no transgredir lo acordado, así como también los volúmenes a administrar (ya sea con jeringa, cuchara o bombilla), para evitar la aspiración.</li>
+                                <li><strong>Ambiente tranquilo:</strong> Evite distracciones. La hora de comer debe ser un momento calmado.</li>
+                                <li><strong>Señales de alerta:</strong> Tos frecuente, carraspera, o voz que suena "húmeda" después de tragar son signos de alarma. Comuníquelos a su equipo de salud.</li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/3 mt-6 md:mt-0">
+                            <img src="Imagenes/Posiciones seguras de alimentacion.png" alt="Posición segura para alimentar" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t pt-6">
+                        <img src="Imagenes/lavado de protesis dental.avif" alt="Lavado de prótesis dental" class="rounded-lg shadow-md w-full md:w-3/4 lg:w-1/2 mx-auto">
+                   </div>
+                </div>
+
+                <!-- Movilidad Content -->
+                <div id="content-movilidad" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">Cambios de Posición y Movilidad</h3>
+                    <div class="md:flex md:space-x-8">
+                        <div class="md:w-2/3 space-y-4 text-gray-700">
+                            <div>
+                                <h4 class="font-semibold text-lg">Prevención de UPP y Rigidez Articular</h4>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                    <li><strong>El reloj postural:</strong> Realice cambios de posición cada 2 a 3 horas, siguiendo un patrón (boca arriba, lado izquierdo, boca arriba, lado derecho).</li>
+                                    <li><strong>Uso de almohadas:</strong> Utilice cojines para liberar de presión las zonas de riesgo como talones, rodillas y codos.</li>
+                                    <li><strong>Movilizaciones pasivas:</strong> Si la persona no puede moverse, ayúdela a mover suavemente sus articulaciones (flexión y extensión) para prevenir la rigidez.</li>
+                                </ul>
+                                <p class="mt-3 p-3 bg-sky-50 rounded-lg"><strong>Nota importante:</strong> El reposo absoluto en cama no está indicado. Siempre que sea posible, se debe intentar mantener a la persona sentada y fomentar que deambule según su tolerancia para preservar la función muscular y prevenir complicaciones.</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Cuidado de la Piel Durante la Movilización</h4>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                    <li>Tenga especial cuidado al movilizar para no generar heridas por roce o arrastre. La piel de la persona mayor es <strong>más fina y delicada</strong> que la de una persona joven.</li>
+                                    <li>Mantenga la piel siempre hidratada para mejorar su resistencia, pero con cuidado de no humedecer en exceso.</li>
+                                    <li><strong>Nunca aplique cremas o lociones sobre heridas abiertas o costras.</strong></li>
+                                    <li>Si accidentalmente se produce una herida, no aplique productos y avise a su equipo del CESFAM para que realicen una evaluación.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Cuide su Espalda</h4>
+                                <p>Al movilizar, doble siempre sus rodillas, no su espalda. Pida ayuda si es necesario y utilice sábanas de movimiento para deslizar en lugar de levantar.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/3 mt-6 md:mt-0">
+                            <img src="Imagenes/Lesiones por presion.png" alt="Ejemplo de movilización y prevención de lesiones por presión" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sueño Content -->
+                <div id="content-sueno" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">Higiene del Sueño</h3>
+                    <div class="md:flex md:space-x-8">
+                        <div class="md:w-2/3 space-y-4 text-gray-700">
+                            <div>
+                                <h4 class="font-semibold text-lg">Medidas Fundamentales para Regular el Ciclo Día-Noche</h4>
+                                <p>Un buen descanso nocturno es vital. Si el ciclo de sueño está invertido, estas estrategias son la base de cualquier tratamiento.</p>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-2">
+                                    <li><strong>Horarios Regulares:</strong> Establezca una hora fija para acostarse y levantarse, incluso los fines de semana. Esto fortalece el reloj biológico.</li>
+                                    <li><strong>Exposición a la Luz Solar:</strong> Es crucial. Abra las cortinas y asegure exposición a luz natural durante la mañana y tarde para sincronizar el cuerpo con el ciclo día-noche.</li>
+                                    <li><strong>Evitar Siestas:</strong> Evite por completo las siestas durante el día. Esto ayuda a "acumular la presión de sueño" para la noche, logrando un descanso más profundo y continuo.</li>
+                                    <li><strong>Actividad Diurna:</strong> Fomente actividades físicas y mentales suaves durante el día (caminatas, ejercicios en silla, conversación, música) para promover un cansancio natural.</li>
+                                    <li><strong>Ambiente Nocturno Óptimo:</strong> La habitación debe ser un santuario para el sueño: oscura, silenciosa, sin pantallas (TV, celular) y a una temperatura agradable.</li>
+                                    <li><strong>Limitar Líquidos y Comidas:</strong> Evite comidas pesadas y una ingesta excesiva de líquidos al menos 2 horas antes de acostarse para no interrumpir el sueño con idas al baño.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Consideraciones Importantes</h4>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-2">
+                                    <li>Recuerde que <strong>es normal que las personas mayores duerman menos horas</strong> que un adulto joven. Si se acuestan muy temprano, es natural que despierten de madrugada. Lo importante es la calidad del descanso.</li>
+                                    <li class="font-bold text-red-600">Si estas medidas de higiene del sueño no se respetan estrictamente, ningún tratamiento farmacológico (pastillas para dormir) será efectivo. Son la base indispensable.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md:w-1/3 mt-6 md:mt-0">
+                            <img src="Imagenes/Trastorno del sueño.jpg" alt="Persona con trastorno del sueño" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rutinas Content -->
+                <div id="content-rutinas" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">Rutinas y Estimulación</h3>
+                    <div class="space-y-4 text-gray-700">
+                        <div>
+                            <h4 class="font-semibold text-lg">Creando un Día Predecible y Seguro</h4>
+                            <p>Para una persona con deterioro cognitivo, el mundo puede ser caótico. Una rutina actúa como un ancla, ofreciendo una estructura que reduce la ansiedad y la confusión. No es una cárcel, es un mapa que da seguridad.</p>
+                            <ul class="list-disc list-inside mt-2 ml-4 space-y-2">
+                                <li><strong>Empezar por lo básico:</strong> Concéntrese en mantener horarios consistentes para los momentos clave del día: levantarse, las comidas principales y acostarse. Esta es la columna vertebral de la rutina.</li>
+                                <li><strong>Ser un guía flexible:</strong> La rutina debe adaptarse a la persona, y no al revés. Si un día está más cansado o agitado, sea flexible. El objetivo es el bienestar, no cumplir un horario rígido.</li>
+                                <li><strong>Incluir momentos de alegría:</strong> Una rutina no es solo una lista de tareas. Es fundamental que incluya actividades placenteras y significativas: escuchar su música favorita, hojear un álbum de fotos, un masaje de manos con crema, o simplemente sentarse juntos a mirar por la ventana.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Salud Content -->
+                <div id="content-salud" class="content-card bg-white p-6 md:p-8 rounded-lg shadow-md hidden">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">Salud General</h3>
+                    <div class="md:flex md:space-x-8">
+                        <div class="md:w-2/3 space-y-4 text-gray-700">
+                            <div>
+                                <h4 class="font-semibold text-lg">Manejo de Medicamentos</h4>
+                                <p>La correcta administración de medicamentos es crucial. Si la persona se niega a tomarlos, no fuerce. Intente entender la causa (¿mal sabor?, ¿dificultad para tragar?) y consulte con su médico o químico farmacéutico si hay alternativas (gotas, jarabes) o si se pueden triturar (¡nunca sin preguntar antes!).</p>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Alerta ante el Delirium</h4>
+                                <p>El delirium es una <strong>emergencia médica</strong> que se manifiesta como un cambio brusco en el estado mental. No es "algo normal de la edad".</p>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                    <li><strong>¿Qué es?:</strong> Un estado de confusión de inicio rápido. La persona puede volverse muy agitada, somnolienta, desorientada o tener alucinaciones.</li>
+                                    <li><strong>Causas comunes:</strong> Generalmente es un síntoma de otro problema, como una infección (urinaria es frecuente), deshidratación, dolor, o estreñimiento.</li>
+                                    <li><strong>¿Qué hacer?:</strong> Si su familiar presenta irritabilidad, desorientación o ansiedad, <strong>no le lleve la contra ni discuta</strong>. Mantenga la calma e intente distraerlo con una actividad tranquila o música suave. Lo más importante es avisar al equipo del CESFAM para buscar y tratar la causa de fondo.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="font-semibold text-lg">Manejo de Enfermedades Crónicas y Monitoreo</h4>
+                                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                                    <li>Las metas de control para enfermedades como la hipertensión o la diabetes <strong>son diferentes y más flexibles</strong> en personas con dependencia severa. Deben ser consultadas y acordadas con el médico del equipo. No busque las mismas cifras que para una persona joven y sana.</li>
+                                    <li><strong>No se justifica realizar control permanente o diario de signos vitales</strong> (presión, pulso, temperatura), salvo que sea una indicación específica de su equipo de salud por una condición puntual.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
+                <p><strong>CESFAM Recreo - San Miguel, Santiago de Chile</strong></p>
+                <p class="mt-2 opacity-70">Este portal es una herramienta de apoyo y no reemplaza la consulta médica profesional. Ante una emergencia, acuda al servicio de urgencia más cercano.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const landingPage = document.getElementById('landing-page');
+            const mainPortal = document.getElementById('main-portal');
+            const enterButton = document.getElementById('enter-portal-btn');
+            
+            enterButton.addEventListener('click', () => {
+                landingPage.style.display = 'none';
+                mainPortal.style.display = 'block';
+            });
+
+            const filterContainer = document.getElementById('faq-filters');
+            const contentDisplayArea = document.getElementById('content-display-area');
+            const contentCards = contentDisplayArea.querySelectorAll('.content-card');
+
+            // Filter functionality
+            if(filterContainer){
+                filterContainer.addEventListener('click', function(e){
+                    const filterBtn = e.target.closest('.filter-btn');
+                    if(filterBtn) {
+                        // Update active button
+                        if (filterContainer.querySelector('.active')) {
+                            filterContainer.querySelector('.active').classList.remove('active');
+                        }
+                        filterBtn.classList.add('active');
+
+                        const category = filterBtn.dataset.category;
+
+                        // Hide all content cards
+                        contentCards.forEach(card => {
+                            card.classList.add('hidden');
+                        });
+
+                        // Show the selected content card
+                        const selectedCard = document.getElementById(`content-${category}`);
+                        if (selectedCard) {
+                            selectedCard.classList.remove('hidden');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
